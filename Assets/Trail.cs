@@ -3,31 +3,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Trail : MonoBehaviour
-{
-    int triggerCount = 0;
-
-    // Start is called before the first frame update
-    public void CheckIn(Snake snake)
+    public class Trail : MonoBehaviour
     {
-        if(snake != parent) {
-            snake.Kill();
-            return;
+        Snake parent;
+
+        private void Awake() {
+            parent = transform.parent.GetComponent<Snake>();
         }
         
-        triggerCount++;
-        if(triggerCount == 2) snake.Kill();
+        int triggerCount = 0;
+
+        // Start is called before the first frame update
+        public void CheckIn(Snake snake)
+        {
+                snake.Kill();
+     
+            
+            // triggerCount++;
+            // if(triggerCount == 50) snake.Kill();
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            
+        }
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
-    Snake parent;
-    public void PassParent(Snake snake)
-    {
-        this.parent = snake;
-    }
-}
+
+
+
+
+
